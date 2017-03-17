@@ -11,7 +11,7 @@ class AutoPage(BasicAction):
         self.input_box(APageLocators.mail_input, name)
         self.input_box(APageLocators.pass_input, password)
         self.click(APageLocators.login_button)
-
+1
 
 
 
