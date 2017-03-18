@@ -22,10 +22,9 @@ Password.grid()
 askPrecisionBtn = Button(root, text='Login', command=getPrecision)
 askPrecisionBtn.grid()
 
+
 def main():
-    while True:
-        root.update_idletasks()
-        root.update()
+    root.mainloop()
 
 if __name__ == '__main__':
     main()

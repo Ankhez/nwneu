@@ -10,11 +10,7 @@ class VKTest(unittest.TestCase, AutoPage, MessagePage):
 
     def setUp(self):
 
-        try:
-            testGUI.main()
-        except TclError:
-            pass
-
+        testGUI.main()
         self.driver = webdriver.Firefox()
         self.driver.implicitly_wait(10)
         self.driver.get("https://vk.com/login?act=mobile&hash=5ccef1ada1b37814")
