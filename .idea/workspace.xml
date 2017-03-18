@@ -21,7 +21,7 @@
     <SUITE FILE_PATH="coverage/VK_ROBOT$ApplicationManager.coverage" NAME="ApplicationManager Coverage Results" MODIFIED="1487437947260" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VK_ROBOT$MessagePages.coverage" NAME="MessagePages Coverage Results" MODIFIED="1489250637735" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VK_ROBOT$SELENIUM_AUTHO.coverage" NAME="SELENIUM_AUTHO Coverage Results" MODIFIED="1489690442187" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/VK_ROBOT$testGUI.coverage" NAME="testGUI Coverage Results" MODIFIED="1489826204324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/VK_ROBOT$testGUI.coverage" NAME="testGUI Coverage Results" MODIFIED="1489827608004" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VK_ROBOT$Unittests_in_test.coverage" NAME="Unittests in test Coverage Results" MODIFIED="1489344674162" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/VK_ROBOT$test321.coverage" NAME="test321 Coverage Results" MODIFIED="1489693203099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -34,11 +34,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="testGUI.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="testGUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testGUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="544">
+              <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -78,7 +78,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="testjson.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="testjson.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/testjson.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="51">
@@ -167,8 +167,8 @@
         <option value="$PROJECT_DIR$/SELENIUM_AUTHO.py" />
         <option value="$PROJECT_DIR$/ApplicationManager.py" />
         <option value="$PROJECT_DIR$/Case.py" />
-        <option value="$PROJECT_DIR$/testGUI.py" />
         <option value="$PROJECT_DIR$/testjson.json" />
+        <option value="$PROJECT_DIR$/testGUI.py" />
       </list>
     </option>
   </component>
@@ -247,7 +247,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="F:/Tornado_chat/testGUI.py" />
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in Case">
+  <component name="RunManager" selected="Python.testGUI">
     <configuration default="false" name="Unittests in Case" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -560,8 +560,8 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in Case" />
-        <item index="1" class="java.lang.String" itemvalue="Python.testGUI" />
+        <item index="0" class="java.lang.String" itemvalue="Python.testGUI" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in Case" />
         <item index="2" class="java.lang.String" itemvalue="Python.test" />
         <item index="3" class="java.lang.String" itemvalue="Python.test321" />
         <item index="4" class="java.lang.String" itemvalue="Python.SELENIUM_AUTHO" />
@@ -964,24 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/testGUI.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SELENIUM_AUTHO.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -996,6 +978,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Case.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testGUI.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="26" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
           <folding />
         </state>
       </provider>
