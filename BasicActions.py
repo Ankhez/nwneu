@@ -22,8 +22,8 @@ class BasicAction(Base):
         input_in_form_login.send_keys(text)
 
     def get_count_of_element(self, locator):
-        count = self.driver.find_elements(*locator)
-        size = len(count)
+        size = self.driver.find_elements(*locator)
+        size = size.__len__()
         return size
 
     def check_exists_by_locator(self, locator):
