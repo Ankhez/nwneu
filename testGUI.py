@@ -1,7 +1,7 @@
 from Tkinter import *
 
 
-def getPrecision():
+def getPrecision(self):
     global my_pass_data
     global my_login_data
     my_pass_data = my_pass_data.get()
@@ -19,13 +19,18 @@ Login.grid()
 label3 = Label(root, text = "Password", fg="Blue")
 label3.grid()
 Password.grid()
-askPrecisionBtn = Button(root, text='Login', command=getPrecision)
+
+askPrecisionBtn = Button(root, text='Login')
+askPrecisionBtn.bind('<Return>',getPrecision)
+askPrecisionBtn.bind('<Button-1>',getPrecision)
 askPrecisionBtn.grid()
 
+
 def main():
-    while True:
-        root.update_idletasks()
-        root.update()
+   # while True:
+        #root.update_idletasks()
+        #root.update()
+	root.mainloop()
 
 if __name__ == '__main__':
     main()
