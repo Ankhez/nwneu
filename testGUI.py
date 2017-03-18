@@ -2,13 +2,13 @@ from Tkinter import *
 
 
 def getPrecision(self ):
+    global my_pass_data
+    global my_login_data
     my_passdata = my_pass_data.get()
     my_logindata = my_login_data.get()
     if (my_logindata.__len__() == 0) or (my_passdata.__len__() == 0) :
         askPrecisionBtn['bg'] = '#ff0000'
     else:
-        global my_pass_data
-        global my_login_data
         my_pass_data = my_pass_data.get()
         my_login_data = my_login_data.get()
         root.destroy()
