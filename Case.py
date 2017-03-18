@@ -3,7 +3,6 @@ from selenium import webdriver
 from ApplicationManager import AutoPage
 from MessagePages import MessagePage
 import testGUI
-from Tkinter import TclError
 
 
 class VKTest(unittest.TestCase, AutoPage, MessagePage):
