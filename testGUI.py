@@ -1,7 +1,7 @@
 from Tkinter import *
 
 
-def getPrecision(self ):
+def getPrecision(self):
     global my_pass_data
     global my_login_data
     my_passdata = my_pass_data.get()

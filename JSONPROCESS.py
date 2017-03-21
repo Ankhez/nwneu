@@ -30,16 +30,22 @@ class JSONDate(BasicAction):
                     return key
         newitem = {None: item.encode('utf-8')}
         self.writeinjson("testjson.json", newitem)
+        return item
 
     def compare_values(self, locator):
         foranswer = []
         values = self.get_text_from_element(locator)
         size = values.__len__()
         while size != 0:
-            word = self.get_key(self.forsave("WordsAnswerDate.json"), values[size-1])
+            word = self.get_key(self.forsave("WordsAnswerDate.json"), values[size.__sub__(1)])
             foranswer.append(word)
             size -= 1
         return foranswer
+
+    def name_add_with_action(self, filename, info):
+        self.writeinjson(filename, info)
+
+
 
 
 

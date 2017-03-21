@@ -27,6 +27,7 @@ class MessagePage(JSONDate):
                         self.driver.refresh()
 
                     size -= 1
+                    print self.get_name_character("fullname")
                     foranswer = self.compare_values(MesssagesReaction.Hello)
 
                     if foranswer[0] is not None:
@@ -39,6 +40,7 @@ class MessagePage(JSONDate):
                             for i in range(0, element.__len__()):
                                 self.input_box(MessagesPageLocators.DialogBox, element[i])
                                 time.sleep(0.1)
+
                             self.driver.find_element(*MessagesPageLocators.DialogBox).send_keys(Keys.ENTER)
 
                     time.sleep(1)
@@ -48,11 +50,15 @@ class MessagePage(JSONDate):
             else:
                 pass
 
-    def get_name_character(self):
+    def get_name_character(self, attribute):
         name = self.driver.find_element(*MessagesPageLocators.BoxWithName)
         name = name.get_attribute('text')
-        name = name[:name.find(' ')]
-        return name
+        if attribute == "onlyname":
+            name = name[:name.find(' ')]
+            return name
+        else:
+            return name
+
 
     @staticmethod
     def hours_hello_answer(hours):
@@ -67,7 +73,7 @@ class MessagePage(JSONDate):
 
     def check_the_get_name(self, element):
         try:
-            name = self.get_name_character()
+            name = self.get_name_character("onlyname")
             element = element + ", " + name
             return element
         except StaleElementReferenceException:
