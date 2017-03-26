@@ -11,15 +11,17 @@ class JSONDate(BasicAction):
     def forsave(filename):
         with open(filename, "r") as f:
             json_data = json.load(f)
+            f.close()
             return json_data
 
     def writeinjson(self, filename, info):
         json_data = self.forsave(filename)
         with open(filename, "w+") as f:
             json_data.update(info)
-            json.dump(json_data, f, ensure_ascii=False)
+            json.dump(json_data, f)
+            f.close()
 
-    def get_key(self, dictionary, item):
+    def get_key(self, dictionary, item, fullname):
         for key, value in dictionary.items():
             if item.lower() in value:
                 if key.__len__ != 0:
@@ -28,22 +30,58 @@ class JSONDate(BasicAction):
                     return key[numberofanswer]
                 else:
                     return key
-        newitem = {None: item.encode('utf-8')}
+        newitem = {item.lower(): fullname}
         self.writeinjson("testjson.json", newitem)
-        return item
+        self.writeinjson("NamesWithAction.json", {fullname: "needtosave"})
+        return unicode("Я только обучаюсь, как бы ты сам ответил на это же сообщение? Ответ напиши в одном сообщении.: "
+                       , 'utf-8')+item
 
-    def compare_values(self, locator):
+    def compare_values(self, locator, fullname):
         foranswer = []
         values = self.get_text_from_element(locator)
         size = values.__len__()
         while size != 0:
-            word = self.get_key(self.forsave("WordsAnswerDate.json"), values[size.__sub__(1)])
+            word = self.get_key(self.forsave("WordsAnswerDate.json"), values[size.__sub__(1)], fullname)
             foranswer.append(word)
             size -= 1
         return foranswer
 
     def name_add_with_action(self, filename, info):
-        self.writeinjson(filename, info)
+        if self.check_name_in_dictionary(self.forsave(filename), info) is not True:
+            self.writeinjson(filename, {info.encode('utf-8'): "needtoanswer"})
+        else:
+            pass
+
+    @staticmethod
+    def check_name_in_dictionary(dictionary, name):
+        for key, value in dictionary.items():
+            if name in key:
+                return True
+
+    @staticmethod
+    def foo(name, fullname):
+        for key, value in name.items():
+            if fullname in value:
+                if key.__len__ != 0:
+                    key = unicode.split(key, ', ')
+                    numberofanswer = random.randrange(0, key.__len__())
+                    return key[numberofanswer]
+                else:
+                    return key
+
+    @staticmethod
+    def del_by_value(dictionary, value):
+        for key, val in dictionary.items():
+            if val == value:
+                del dictionary[key]
+                return dictionary
+
+    @staticmethod
+    def writeinjson_without_save(filename, info):
+        with open(filename, "w+") as f:
+            json.dump(info, f)
+            f.close()
+
 
 
 

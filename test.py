@@ -2,7 +2,15 @@
 import Tkinter
 import json
 
-c = {None: "хер"}
-print type(c)
-with open("data.json", "w+") as f:
-    json.dump(c, f, ensure_ascii=False)
+a = u'привет'
+c = u'Иван'
+b = {c: a}
+print b
+s = json.dumps(c, ensure_ascii=False)
+
+print s
+#print b
+
+
+#print type(c)
+#print c
