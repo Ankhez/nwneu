@@ -7,6 +7,7 @@ import random
 class JSONDate(BasicAction):
     class_description = "JSON_PROCESS"
 
+#open json file and return ALL values as one dictionary
     @staticmethod
     def forsave(filename):
         with open(filename, "r") as f:
@@ -14,6 +15,7 @@ class JSONDate(BasicAction):
             f.close()
             return json_data
 
+#write in json past date + new date in end of file(probably will be sorted:DUNNO)
     def writeinjson(self, filename, info):
         json_data = self.forsave(filename)
         with open(filename, "w+") as f:
@@ -21,6 +23,7 @@ class JSONDate(BasicAction):
             json.dump(json_data, f)
             f.close()
 
+#return key as answer if we have in dictionary or trigger to save date(if we haven't answer for question)
     def get_key(self, dictionary, item, fullname):
         for key, value in dictionary.items():
             if item.lower() in value:
@@ -36,6 +39,7 @@ class JSONDate(BasicAction):
         return unicode("Я только обучаюсь, как бы ты сам ответил на это же сообщение? Ответ напиши в одном сообщении.: "
                        , 'utf-8')+item
 
+#get all messages from li in the dialog and after this operate above each
     def compare_values(self, locator, fullname):
         foranswer = []
         values = self.get_text_from_element(locator)
@@ -46,6 +50,7 @@ class JSONDate(BasicAction):
             size -= 1
         return foranswer
 
+#compare consist in json NAMES
     def name_add_with_action(self, filename, info):
         if self.check_name_in_dictionary(self.forsave(filename), info) is not True:
             self.writeinjson(filename, {info.encode('utf-8'): "needtoanswer"})
@@ -76,6 +81,7 @@ class JSONDate(BasicAction):
                 del dictionary[key]
                 return dictionary
 
+#release for delete line which we move to json date
     @staticmethod
     def writeinjson_without_save(filename, info):
         with open(filename, "w+") as f:

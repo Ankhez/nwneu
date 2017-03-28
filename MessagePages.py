@@ -26,11 +26,13 @@ class MessagePage(JSONDate):
                     except NoSuchElementException:
                         self.driver.refresh()
 
+                    #Get name of dialog character. After this we need to find key:name and get reaction for his/her message
                     size -= 1
                     fullname = self.get_name_character("fullname")
                     self.name_add_with_action("NamesWithAction.json", fullname)
                     valueswithname = self.forsave("NamesWithAction.json")
                     if valueswithname[fullname] == 'needtoanswer':
+                        #in this block we get values from message and search key for answer in JSON
                         foranswer = self.compare_values(MesssagesReaction.Hello, fullname)
 
                         if foranswer[0] is not None:
@@ -48,6 +50,7 @@ class MessagePage(JSONDate):
 
                         self.go_back_with_sleep()
                     elif valueswithname[fullname] == 'needtosave':
+                        #this block append new answer date for question. The start of learn study. Need incapsul!!
                         values = self.get_text_from_element(MesssagesReaction.Hello)
                         self.input_box(MessagesPageLocators.DialogBox, unicode("Спасибо!", 'utf-8'))
                         name = self.forsave("testjson.json")
@@ -60,10 +63,10 @@ class MessagePage(JSONDate):
                         self.driver.find_element(*MessagesPageLocators.DialogBox).send_keys(Keys.ENTER)
                         self.go_back_with_sleep()
 
-
             else:
                 pass
 
+#get full name for JSON date keys
     def get_name_character(self, attribute):
         try:
             time.sleep(1)
@@ -78,6 +81,7 @@ class MessagePage(JSONDate):
             self.driver.refresh()
             self.get_name_character(attribute)
 
+#generate true answer with NAME
     @staticmethod
     def hours_hello_answer(hours):
         if 9 > hours > 3:
@@ -93,17 +97,6 @@ class MessagePage(JSONDate):
             name = self.get_name_character("onlyname")
             element = element + ", " + name
             return element
-
-    def get_date_for_save(self, locator, filename, item, fullname):
-        values = self.get_text_from_element(locator)
-        while size != 0:
-            word = self.get_key(self.forsave("WordsAnswerDate.json"), values[size.__sub__(1)], fullname)
-            foranswer.append(word)
-            size -= 1
-        return foranswer
-        answer = self.get_key(self.forsave('testjson.json'), item, fullname)
-        print answer
-        self.writeinjson(filename, {values: answer})
 
     def go_back_with_sleep(self):
         time.sleep(1)
