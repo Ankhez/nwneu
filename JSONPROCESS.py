@@ -12,7 +12,6 @@ class JSONDate(BasicAction):
     def forsave(filename):
         with open(filename, "r") as f:
             json_data = json.load(f)
-            f.close()
             return json_data
 
 #write in json past date + new date in end of file(probably will be sorted:DUNNO)
@@ -21,7 +20,6 @@ class JSONDate(BasicAction):
         with open(filename, "w+") as f:
             json_data.update(info)
             json.dump(json_data, f)
-            f.close()
 
 #return key as answer if we have in dictionary or trigger to save date(if we haven't answer for question)
     def get_key(self, dictionary, item, fullname):
@@ -86,7 +84,6 @@ class JSONDate(BasicAction):
     def writeinjson_without_save(filename, info):
         with open(filename, "w+") as f:
             json.dump(info, f)
-            f.close()
 
 
 
