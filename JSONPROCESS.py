@@ -2,6 +2,7 @@
 import json
 from BasicActions import BasicAction
 import random
+import re
 
 
 class JSONDate(BasicAction):
@@ -21,16 +22,47 @@ class JSONDate(BasicAction):
             json_data.update(info)
             json.dump(json_data, f)
 
+# search substring in user message
+
+    def sub_search(self, stri, str1):
+        delete = re.compile(ur'\W+?', re.UNICODE)
+        str1 = str1.lower()
+        str1 = delete.sub(' ', str1)
+        number_of_words = len(stri.split())
+        found_words = 0
+        lists = str1.split()
+        for it in lists:
+            found = stri.find(it)
+            if found != -1:
+                found_words += 1
+            if found_words == number_of_words:
+                return True
+        return False
+
+
 #return key as answer if we have in dictionary or trigger to save date(if we haven't answer for question)
     def get_key(self, dictionary, item, fullname):
+        item = item.lower()
         for key, value in dictionary.items():
-            if item.lower() in value:
-                if key.__len__ != 0:
-                    key = unicode.split(key, ', ')
-                    numberofanswer = random.randrange(0, key.__len__())
-                    return key[numberofanswer]
-                else:
-                    return key
+            if type(value) is list:
+                for statement in value:
+                    if self.sub_search(statement, item) is True:
+                        print("sub_search in list is true")
+
+                        print("lower is true")
+                        if key.__len__ != 0:
+                            key = unicode.split(key, ', ')
+                            numberofanswer = random.randrange(0, key.__len__())
+                            return key[numberofanswer]
+                        else:
+                            return key
+            else:
+                if self.sub_search(value,item) is True:
+                    print("sub_search in str is true")
+                    print(type(item))
+                    print(type(value))
+                    return  key
+
         newitem = {item.lower(): fullname}
         self.writeinjson("testjson.json", newitem)
         self.writeinjson("NamesWithAction.json", {fullname: "needtosave"})
