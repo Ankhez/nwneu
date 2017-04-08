@@ -8,14 +8,14 @@ import re
 class JSONDate(BasicAction):
     class_description = "JSON_PROCESS"
 
-#open json file and return ALL values as one dictionary
+# open json file and return ALL values as one dictionary
     @staticmethod
     def forsave(filename):
         with open(filename, "r") as f:
             json_data = json.load(f)
             return json_data
 
-#write in json past date + new date in end of file(probably will be sorted:DUNNO)
+# write in json past date + new date in end of file(probably will be sorted:DUNNO)
     def writeinjson(self, filename, info):
         json_data = self.forsave(filename)
         with open(filename, "w+") as f:
@@ -24,23 +24,27 @@ class JSONDate(BasicAction):
 
 # search substring in user message
 
-    def sub_search(self, stri, str1):
+    @staticmethod
+    def sub_search(json_val, input_vk):
         delete = re.compile(ur'\W+?', re.UNICODE)
-        str1 = str1.lower()
-        str1 = delete.sub(' ', str1)
-        number_of_words = len(stri.split())
+        input_vk = input_vk.lower()
+        input_vk = delete.sub(' ', input_vk)
+        number_of_words = len(json_val.split())
         found_words = 0
-        lists = str1.split()
-        for it in lists:
-            found = stri.find(it)
-            if found != -1:
-                found_words += 1
+        input_vk_words = input_vk.split()
+        json_val_words = json_val.split()
+        for items in input_vk_words:
+            for words in json_val_words:
+                if items == words:
+                    found_words += 1
+                    break
             if found_words == number_of_words:
                 return True
         return False
 
 
-#return key as answer if we have in dictionary or trigger to save date(if we haven't answer for question)
+
+# return key as answer if we have in dictionary or trigger to save date(if we haven't answer for question)
     def get_key(self, dictionary, item, fullname):
         item = item.lower()
         for key, value in dictionary.items():
@@ -69,7 +73,7 @@ class JSONDate(BasicAction):
         return unicode("Я только обучаюсь, как бы ты сам ответил на это же сообщение? Ответ напиши в одном сообщении.: "
                        , 'utf-8')+item
 
-#get all messages from li in the dialog and after this operate above each
+# get all messages from li in the dialog and after this operate above each
     def compare_values(self, locator, fullname):
         foranswer = []
         values = self.get_text_from_element(locator)
@@ -80,7 +84,7 @@ class JSONDate(BasicAction):
             size -= 1
         return foranswer
 
-#compare consist in json NAMES
+# compare consist in json NAMES
     def name_add_with_action(self, filename, info):
         if self.check_name_in_dictionary(self.forsave(filename), info) is not True:
             self.writeinjson(filename, {info.encode('utf-8'): "needtoanswer"})
@@ -111,7 +115,7 @@ class JSONDate(BasicAction):
                 del dictionary[key]
                 return dictionary
 
-#release for delete line which we move to json date
+# release for delete line which we move to json date
     @staticmethod
     def writeinjson_without_save(filename, info):
         with open(filename, "w+") as f:
