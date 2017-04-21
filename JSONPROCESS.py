@@ -29,6 +29,8 @@ class JSONDate(BasicAction):
         delete = re.compile(ur'\W+?', re.UNICODE)
         input_vk = input_vk.lower()
         input_vk = delete.sub(' ', input_vk)
+        json_val = delete.sub(' ', json_val)
+        json_val = json_val.lower()
         number_of_words = len(json_val.split())
         found_words = 0
         input_vk_words = input_vk.split()
@@ -44,27 +46,27 @@ class JSONDate(BasicAction):
 
 
 
+
+
 # return key as answer if we have in dictionary or trigger to save date(if we haven't answer for question)
-    def get_key(self, dictionary, item, fullname):
+    def get_key(self, dictionary, key_dict, item, fullname):
         item = item.lower()
         for key, value in dictionary.items():
+            if item.lower() in value:
+                if key.__len__ != 0:
+                    key = unicode.split(key, ', ')
+                    numberofanswer = random.randrange(0, key.__len__())
+                    return key[numberofanswer]
+                else:
+                    return key
+
+        for key, value in key_dict.items():
             if type(value) is list:
                 for statement in value:
                     if self.sub_search(statement, item) is True:
-                        print("sub_search in list is true")
-
-                        print("lower is true")
-                        if key.__len__ != 0:
-                            key = unicode.split(key, ', ')
-                            numberofanswer = random.randrange(0, key.__len__())
-                            return key[numberofanswer]
-                        else:
-                            return key
+                        return key
             else:
                 if self.sub_search(value,item) is True:
-                    print("sub_search in str is true")
-                    print(type(item))
-                    print(type(value))
                     return  key
 
         newitem = {item.lower(): fullname}
@@ -79,7 +81,7 @@ class JSONDate(BasicAction):
         values = self.get_text_from_element(locator)
         size = values.__len__()
         while size != 0:
-            word = self.get_key(self.forsave("WordsAnswerDate.json"), values[size.__sub__(1)], fullname)
+            word = self.get_key(self.forsave("WordsAnswerDate.json"),self.forsave("data.json"), values[size.__sub__(1)], fullname)
             foranswer.append(word)
             size -= 1
         return foranswer
