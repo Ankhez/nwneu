@@ -2,13 +2,10 @@
 import Tkinter
 import json
 
-a = u'привет'
-c = u'Иван'
-b = {c: a}
-print b
-s = json.dumps(c, ensure_ascii=False)
+a = u'что по матчам доты'
 
-print s
+
+print {123:a}
 #print b
 
 

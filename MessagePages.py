@@ -7,7 +7,8 @@ import time
 from selenium.common.exceptions import StaleElementReferenceException
 import datetime
 from selenium.common.exceptions import NoSuchElementException
-import random
+from Weather.Weather import  Weather
+from DotaMatches.DotaMathes import Matches
 
 class MessagePage(JSONDate):
 
@@ -37,16 +38,25 @@ class MessagePage(JSONDate):
 
                         if foranswer[0] is not None:
                             for element in foranswer:
-                                if element == (unicode('Привет', 'utf-8')):
+                                if element == "weatherweek":
+                                    element = Weather.weathebydayintheweek(u'что по погоде на неделю')
+                                elif element == (unicode('Привет', 'utf-8')):
                                     element = self.check_the_get_name(element)
                                 elif element == (unicode('Часы', 'utf-8')):
                                     element = self.hours_hello_answer(datetime.datetime.now().hour)
                                     element = self.check_the_get_name(element)
+                                elif element == "dotamatches":
+                                    element = Matches.parsewithpagination()
+
                                 for i in range(0, element.__len__()):
                                     self.input_box(MessagesPageLocators.DialogBox, element[i])
-                                    time.sleep(0.1)
+                                    if isinstance(element, list):
+                                        self.driver.find_element(*MessagesPageLocators.DialogBox).send_keys(
+                                            Keys.SHIFT + Keys.ENTER)
+                                        self.driver.find_element(*MessagesPageLocators.DialogBox).send_keys(
+                                            Keys.SHIFT + Keys.ENTER)
 
-                                self.driver.find_element(*MessagesPageLocators.DialogBox).send_keys(Keys.ENTER)
+                            self.driver.find_element(*MessagesPageLocators.DialogBox).send_keys(Keys.ENTER)
 
                         self.go_back_with_sleep()
                     elif valueswithname[fullname] == 'needtosave':
